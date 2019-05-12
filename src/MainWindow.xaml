@@ -1,0 +1,123 @@
+﻿<!--
+ Copyright (c) 2019 Emilian Roman
+ 
+ This software is provided 'as-is', without any express or implied
+ warranty. In no event will the authors be held liable for any damages
+ arising from the use of this software.
+ 
+ Permission is granted to anyone to use this software for any purpose,
+ including commercial applications, and to alter it and redistribute it
+ freely, subject to the following restrictions:
+ 
+ 1. The origin of this software must not be misrepresented; you must not
+    claim that you wrote the original software. If you use this software
+    in a product, an acknowledgment in the product documentation would be
+    appreciated but is not required.
+ 2. Altered source versions must be plainly marked as such, and must not be
+    misrepresented as being the original software.
+ 3. This notice may not be removed or altered from any source distribution.
+-->
+
+<Window x:Class="Placien.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Placien"
+        mc:Ignorable="d"
+        Title="Copien"
+        SizeToContent="Height"
+        Width="320"
+        SnapsToDevicePixels="True"
+        WindowStartupLocation="CenterScreen"
+        ResizeMode="CanMinimize">
+    <Window.DataContext>
+        <local:Main />
+    </Window.DataContext>
+    <StackPanel>
+        <!-- Header -->
+        <Label HorizontalAlignment="Center"
+               FontFamily="Segoe UI Light"
+               FontSize="48"
+               Foreground="#8a80ad" Content="Copien"/>
+        <Label HorizontalAlignment="Center"
+               Foreground="Gray" Content="It copies shit"/>
+
+        <!-- Main -->
+        <StackPanel Margin="25,15,25,5">
+            <StackPanel.Resources>
+                <Style TargetType="{x:Type TextBox}">
+                    <Setter Property="VerticalContentAlignment" Value="Center" />
+                </Style>
+                <Style TargetType="{x:Type Label}">
+                    <Setter Property="Width" Value="80" />
+                </Style>
+                <Style TargetType="{x:Type Button}" BasedOn="{StaticResource {x:Type Button}}">
+                    <Setter Property="Content" Value="📁" />
+                    <Setter Property="DockPanel.Dock" Value="Right" />
+                    <Setter Property="Margin" Value="1,0,0,0" />
+                </Style>
+            </StackPanel.Resources>
+
+            <!-- Apply -->
+            <GroupBox Header="Select Selections">
+                <StackPanel>
+                    <!-- Placeholder -->
+                    <DockPanel>
+                        <Label Content="Host Folder:" />
+                        <Button Click="BrowsePlaceholder" />
+                        <TextBox x:Name="hostbox" Text="{Binding Placeholder}" />
+                    </DockPanel>
+
+                    <!-- Directory -->
+                    <DockPanel Margin="0,1,0,0">
+                        <Label Content="Target folder:" />
+                        <Button Click="BrowseTarget" />
+                        <TextBox x:Name="targetbox" Text="{Binding Directory}" />
+                    </DockPanel>
+
+                    <!-- Filter -->
+                
+                    
+                    
+                    <DockPanel Margin="0,1,0,0">
+                        <Label Content="Tags Folder:" />
+                        <Button Click="GetTags" />
+                        <TextBox x:Name="tagbox" Text="{Binding TagFolder}" />
+                                               
+                    </DockPanel>
+
+                    <DockPanel Margin="0,1,0,0">
+                        <Label Content="File Type" />
+                        <TextBox x:Name="typebox" Text="{Binding Filter}" />
+                    </DockPanel>
+
+                    <Button Margin="80,1,80,0"
+                            Height="25"
+                            x:Name="ApplyPlaceholderButton"
+                            Click="ApplyPlaceholder" Content="Copy Shit"/>
+                </StackPanel>
+            </GroupBox>
+
+            <!-- Restore -->
+
+            <!-- Placien -->
+
+            <!-- Sapien -->
+
+            <!-- Version -->
+        </StackPanel>
+
+        <!-- Output -->
+        <TextBox Text="{Binding Output}"
+                 Background="Black"
+                 Foreground="#8a80ad"
+                 Height="120"
+                 Padding="5"
+                 FontFamily="Consolas"
+                 BorderThickness="0"
+                 VerticalContentAlignment="Top" />
+
+
+    </StackPanel>
+</Window>
